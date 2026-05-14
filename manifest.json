@@ -1,9 +1,9 @@
 {
-  "id": "my-cool-plugin",
-  "name": "My Cool Plugin",
+  "id": "Dashboard Plugin",
+  "name": "Dashboard Plugin",
   "version": "1.0.0",
   "minAppVersion": "0.15.0",
-  "description": "Short summary here.",
-  "author": "Your Name",
+  "description": "My personal dashboard to my obsidian vault.",
+  "author": "Chris Boissonnault",
   "isDesktopOnly": false
 }
