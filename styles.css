@@ -1,5 +1,16 @@
-/* 
-   This file can be empty. 
-   Any CSS you put here will be globally applied to Obsidian 
-   whenever your plugin is enabled.
-*/
+/* Target the specific modal we tagged in main.js */
+.my-full-screen-modal {
+    width: 90vw !important;  /* 90% of the screen width */
+    height: 80vh !important; /* 80% of the screen height */
+    max-width: 1000px;       /* Don't let it get TOO big on huge monitors */
+}
+
+/* On mobile/Android, make it truly full screen */
+@media (max-width: 600px) {
+    .my-full-screen-modal {
+        width: 100vw !important;
+        height: 100vh !important;
+        margin: 0;
+        border-radius: 0;
+    }
+}

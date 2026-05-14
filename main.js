@@ -1,31 +1,37 @@
-// PART 1: THE IMPORT
-// You MUST tell the code where to find the Obsidian tools.
-const { Plugin } = require('obsidian');
+const { Plugin, Modal } = require('obsidian');
 
-// PART 2: THE CLASS
-// Your plugin MUST be a "child" of the standard Plugin class.
-// The name "MyPlugin" is flexible, but it must match Part 3 below.
 class MyPlugin extends Plugin {
-
-    // PART 3: THE ONLOAD
-    // This function MUST exist. It is the "Start" button.
     async onload() {
-        console.log('Plugin has loaded!');
-        
-        /* 
-           THIS IS THE FLEXIBLE AREA
-           Everything you want the plugin to DO 
-           (buttons, commands, settings) goes here. 
-        */
-    }
-
-    // THE ONUNLOAD (Recommended)
-    // This runs when you toggle the plugin "Off".
-    onunload() {
-        console.log('Plugin has unloaded.');
+        // 1. THE RIBBON ICON
+        // 'dice' is the icon, 'Open My Dialog' is the hover text
+        this.addRibbonIcon('dice', 'Open My Dialog', (evt) => {
+            // This code runs when you click the button
+            new MyFullScreenModal(this.app).open();
+        });
     }
 }
 
-// PART 4: THE EXPORT
-// This tells Obsidian: "This class is the one you should run."
+// 2. THE MODAL CLASS
+// This defines what actually pops up
+class MyFullScreenModal extends Modal {
+    constructor(app) {
+        super(app);
+    }
+
+    onOpen() {
+        const { contentEl } = this;
+        
+        // Add a class so we can target it with CSS for the "full screen" look
+        this.modalEl.addClass('my-full-screen-modal');
+
+        contentEl.createEl('h1', { text: 'This is my dialog' });
+        contentEl.createEl('p', { text: 'It is triggered from the ribbon!' });
+    }
+
+    onClose() {
+        const { contentEl } = this;
+        contentEl.empty();
+    }
+}
+
 module.exports = MyPlugin;
