@@ -1,0 +1,9 @@
+{
+  "id": "my-cool-plugin",
+  "name": "My Cool Plugin",
+  "version": "1.0.0",
+  "minAppVersion": "0.15.0",
+  "description": "Short summary here.",
+  "author": "Your Name",
+  "isDesktopOnly": false
+}
